@@ -1,3 +1,3 @@
-# [Raspberry Pi Pico development platform for PlatformIO](https://github.com/Wiz-IO/wizio-pico)
+# AIR105 (MH1903) for PlatformIO
 
-## version: 1.1.1
+## version: 1.0.0

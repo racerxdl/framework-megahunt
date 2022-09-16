@@ -1,0 +1,11 @@
+{
+    "type": "tool",
+    "name": "framework-megahunt",
+    "version": "1.0.0",
+    "spec": {
+        "owner": "platformio",
+        "name": "framework-megahunt",
+        "requirements": null,
+        "uri": null
+    }
+}

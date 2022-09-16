@@ -6,7 +6,7 @@
 #define configUSE_PREEMPTION                    1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configUSE_TICKLESS_IDLE                 0
-#define configCPU_CLOCK_HZ                      125000000 /* Looking at runtime.c in the RPI 2040 SDK, the sys clock frequency is 125MHz */
+#define configCPU_CLOCK_HZ                      120000000 /* The sys clock frequency for MH1903 is 120MHz */
 #define configSYSTICK_CLOCK_HZ                  1000000   /* This is always 1MHz on ARM I think.... */
 #define configTICK_RATE_HZ                      1000      /* I personally like 1kHz so you can do 1 ms sleeps */
 #define configMAX_PRIORITIES                    5
