@@ -44,7 +44,6 @@ void USART_Init(void) {
     SYSCTRL_APBPeriphResetCmd(DEBUG_USART_CLK_ENABLE, ENABLE);
 
     GPIO_PinRemapConfig(DEBUG_USART_TX_PORT, DEBUG_USART_TX_Pin, DEBUG_USART_TX_Remap);
-
     GPIO_PinRemapConfig(DEBUG_USART_RX_PORT, DEBUG_USART_RX_Pin, DEBUG_USART_RX_Remap);
 
     UART_InitStructure.UART_BaudRate = DEBUG_USART_BAUDRATE;
@@ -55,24 +54,23 @@ void USART_Init(void) {
     UART_Init(DEBUG_USART, &UART_InitStructure);
 
     /// <summary>    IT Config    </summary>
-    UART_ITConfig(UART0, UART_IT_RX_RECVD, ENABLE);
+    //UART_ITConfig(UART0, UART_IT_RX_RECVD, ENABLE);
 
     /// <summary>    NVIC    </summary>
-    NVIC_SetPriorityGrouping(NVIC_PriorityGroup_0);
+    // NVIC_SetPriorityGrouping(NVIC_PriorityGroup_0);
 
-    NVIC_InitStructure.NVIC_IRQChannel = UART0_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    // NVIC_InitStructure.NVIC_IRQChannel = UART0_IRQn;
+    // NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    // NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    // NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 
-    NVIC_Init(&NVIC_InitStructure);
+    // NVIC_Init(&NVIC_InitStructure);
 }
 
-int fputc(int ch, FILE* f) {
-    while (!UART_IsTXEmpty(DEBUG_USART))
-        ;
+// int fputc(int ch, FILE* f) {
+//     while (!UART_IsTXEmpty(DEBUG_USART));
 
-    UART_SendData(DEBUG_USART, (uint8_t)ch);
+//     UART_SendData(DEBUG_USART, (uint8_t)ch);
 
-    return ch;
-}
+//     return ch;
+// }
