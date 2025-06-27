@@ -97,9 +97,9 @@ typedef enum IRQn
     EXTI3_IRQn                                      = 25,
     SPI1_IRQn                                       = 26,
     SPI2_IRQn                                       = 27,
-    
+
     SCI2_IRQn                                       = 29,
-   
+
     UART2_IRQn                                      = 32,
     UART3_IRQn                                      = 33,
     QSPI_IRQn                                       = 35,
@@ -109,7 +109,7 @@ typedef enum IRQn
     TIM0_6_IRQn                                     = 39,
     TIM0_7_IRQn                                     = 40,
     DCMI_IRQn                                       = 42,
-   
+
     QR_IRQn                                         = 46,
 	GPU_IRQn										= 47,
 
@@ -169,7 +169,7 @@ typedef enum IRQn
 
 /** @addtogroup Exported_types
   * @{
-  */  
+  */
 
 typedef enum {RESET = 0, SET = !RESET} FlagStatus, ITStatus;
 
@@ -305,7 +305,7 @@ typedef struct
     __I  uint32_t CPR;
     __I  uint32_t UCV;
     __I  uint32_t CTR;
-    
+
 } UART_TypeDef;
 
 typedef struct
@@ -338,7 +338,7 @@ typedef struct
     __I  uint32_t SSI_COMP_VERSION;
     __IO uint32_t DR;
     __IO uint32_t DR_Array[35];
-    __IO uint32_t RX_SAMPLE_DLY;    
+    __IO uint32_t RX_SAMPLE_DLY;
 } SPI_TypeDef;
 
 typedef struct
@@ -378,24 +378,24 @@ typedef struct
     __IO uint32_t CACHE_CONFIG;
 	__I  uint32_t CACHE_RSVD1[(0x74-0x44) >> 2];
     __IO uint32_t CACHE_SADDR;
-    __IO uint32_t CACHE_EADDR;		
-	
+    __IO uint32_t CACHE_EADDR;
+
 } CACHE_TypeDef;
 
 typedef struct
 {
-	__IO uint32_t CR0;				/*!< HSPIM Control register0		 		*/
-	__IO uint32_t FLCR;				/*!< HSPIM Flow Control register	 		*/
-	__IO uint32_t FLSR;  			/*!< HSPIM Flow Status register 			*/
-	__IO uint32_t FCR;				/*!< HSPIM FIFO Control register 			*/
-	__I  uint32_t RDR;				/*!< HSPIM Read Data register 				*/
-	__O  uint32_t WDR;				/*!< HSPIM Write Data register 				*/
-	__I  uint32_t SR;				/*!< HSPIM Status register 					*/
-	__IO uint32_t CR1;				/*!< HSPIM Control register1 				*/
-	__IO uint32_t FSR;				/*!< HSPIM FIFO Status register				*/
-	__IO uint32_t DCR;				/*!< HSPIM DMA Control register 			*/	
-	__I  uint32_t TISR;				/*!< HSPIM TX Interrput Status register		*/	
-	__I  uint32_t RISR;				/*!< HSPIM RX Interrput Status register		*/	
+    __IO uint32_t CR0;              /*!< HSPIM Control register0                */
+    __IO uint32_t FLCR;             /*!< HSPIM Flow Control register            */
+    __IO uint32_t FLSR;             /*!< HSPIM Flow Status register             */
+    __IO uint32_t FCR;              /*!< HSPIM FIFO Control register            */
+    __I  uint32_t RDR;              /*!< HSPIM Read Data register               */
+    __O  uint32_t WDR;              /*!< HSPIM Write Data register              */
+    __I  uint32_t SR;               /*!< HSPIM Status register                  */
+    __IO uint32_t CR1;              /*!< HSPIM Control register1                */
+    __IO uint32_t FSR;              /*!< HSPIM FIFO Status register             */
+    __IO uint32_t DCR;              /*!< HSPIM DMA Control register             */
+    __I  uint32_t TISR;             /*!< HSPIM TX Interrput Status register     */
+    __I  uint32_t RISR;             /*!< HSPIM RX Interrput Status register     */
 }HSPIM_TypeDef;
 
 typedef struct
@@ -432,7 +432,7 @@ typedef struct
 	__IO uint32_t TABLE1_RAM;
 	__IO uint32_t RESERVED6[255];
 	__IO uint32_t TABLE2_RAM;
-	__IO uint32_t RESERVED7[63];    
+	__IO uint32_t RESERVED7[63];
 }QRCODE_TypeDef;
 
 
@@ -443,7 +443,7 @@ typedef struct
     __I  uint32_t WDT_CCVR;
     __O  uint32_t WDT_CRR;
     __I  uint32_t WDT_STAT;
-    __I  uint32_t WDT_EOI;  
+    __I  uint32_t WDT_EOI;
     __I  uint32_t RESERVED1;
     __IO uint32_t WDT_RLD;
     __I  uint32_t RESERVED[53];
@@ -483,7 +483,7 @@ typedef struct
     __IO uint32_t TIM_ReloadCount[TIM_NUM];
 } TIM_Module_TypeDef;
 
-typedef struct 
+typedef struct
 {
     __IO uint32_t ADC_CR1;
     __I  uint32_t ADC_SR;
@@ -494,16 +494,16 @@ typedef struct
     __IO uint32_t ADC_CR2;
 } ADC_TypeDef;
 
-typedef struct 
+typedef struct
 {
     __IO uint32_t DAC_CR1;
     __IO uint32_t DAC_DATA;
     __IO uint32_t DAC_TIMER;
     __I  uint32_t DAC_FIFO_FL;
-    __IO uint32_t DAC_FIFO_THR;	
+    __IO uint32_t DAC_FIFO_THR;
 } DAC_TypeDef;
 
-typedef struct 
+typedef struct
 {
     __IO uint32_t AWD_CR1;
     __IO uint32_t AWD_CR2;
@@ -554,25 +554,25 @@ typedef struct
 typedef struct
 {
     __IO uint32_t KEY[BPK_KEY_NUM];
-	__I  uint32_t BPK_RSVD0[(0x80-0x40)>>2];	
+	__I  uint32_t BPK_RSVD0[(0x80-0x40)>>2];
     __IO uint32_t BPK_RDY;
     __IO uint32_t BPK_CLR;
     __IO uint32_t BPK_LRA;
     __IO uint32_t BPK_LWA;
-    __I  uint32_t BPK_RSVD1;	
+    __I  uint32_t BPK_RSVD1;
     __IO uint32_t BPK_LR;
 	__IO uint32_t BPK_SCR;
 	__IO uint32_t BPK_POWER;
-   
+
     __IO uint32_t RTC_CS;
     __IO uint32_t RTC_REF;
     __IO uint32_t RTC_ARM;
     __I  uint32_t RTC_TIM;
     __O  uint32_t RTC_INTCLR;
     __IO uint32_t OSC32K_CR;
-    __IO uint32_t RTC_ATTA_TIM;	
+    __IO uint32_t RTC_ATTA_TIM;
 
-	__IO uint32_t BPK_RR;	
+	__IO uint32_t BPK_RR;
     __IO uint32_t SEN_EXT_TYPE;
     __IO uint32_t SEN_EXT_CFG;
     __IO uint32_t SEN_SOFT_EN;
@@ -593,14 +593,14 @@ typedef struct
     __IO uint32_t SEN_ATTCLR;
     FLAG_TypeDef  SEN_FLAG;
     __IO uint32_t SEN_DEBUG;
-    __I  uint32_t BPU_RSVD4[(0x200- 0x178) >> 2];	
+    __I  uint32_t BPU_RSVD4[(0x200- 0x178) >> 2];
 	__IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
 } BPU_TypeDef;
 
 typedef struct
 {
     __IO uint32_t KEY[BPK_KEY_NUM];
-	__I  uint32_t BPK_RSVD0[(0x80-0x40) >> 2];	
+	__I  uint32_t BPK_RSVD0[(0x80-0x40) >> 2];
     __IO uint32_t BPK_RDY;
     __IO uint32_t BPK_CLR;
     __IO uint32_t BPK_LRA;
@@ -626,7 +626,7 @@ typedef struct
 #define INNER_SENSOR_NUM       7
 typedef struct
 {
-	__IO uint32_t BPK_RR;	
+	__IO uint32_t BPK_RR;
     __IO uint32_t SEN_EXT_TYPE;
     __IO uint32_t SEN_EXT_CFG;
     __IO uint32_t SEN_SOFT_EN;
@@ -647,7 +647,7 @@ typedef struct
     __IO uint32_t SEN_ATTCLR;
     FLAG_TypeDef  SEN_FLAG;
     __IO uint32_t SEN_DEBUG;
-    __I  uint32_t RESERVED4[(0x200- 0x178) >> 2];	
+    __I  uint32_t RESERVED4[(0x200- 0x178) >> 2];
 	__IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
 } SEN_TypeDef;
 
@@ -705,7 +705,7 @@ typedef struct
     __IO uint32_t IC_ACK_GENERAL_CALL;
     __I  uint32_t IC_ENABLE_STATUS;
     __IO uint32_t IC_FS_SPKLEN;
-    __IO uint32_t IC_HS_SPKLEN; 
+    __IO uint32_t IC_HS_SPKLEN;
 } I2C_TypeDef;
 
 typedef struct
@@ -757,7 +757,7 @@ typedef struct
     __I  uint32_t RawDstTran_H;
     __I  uint32_t RawErr_L;
     __I  uint32_t RawErr_H;
-    
+
     __I  uint32_t StatusTfr_L;
     __I  uint32_t StatusTfr_H;
     __I  uint32_t StatusBlock_L;
@@ -779,7 +779,7 @@ typedef struct
     __IO uint32_t MaskDstTran_H;
     __IO uint32_t MaskErr_L;
     __IO uint32_t MaskErr_H;
-    
+
     __O  uint32_t ClearTfr_L;
     __O  uint32_t ClearTfr_H;
     __O  uint32_t ClearBlock_L;
@@ -790,10 +790,10 @@ typedef struct
     __O  uint32_t ClearDstTran_H;
     __O  uint32_t ClearErr_L;
     __O  uint32_t ClearErr_H;
-    
+
     __I  uint32_t StatusInt_L;
     __I  uint32_t StatusInt_H;
-    
+
     __IO uint32_t ReqSrcReg_L;
     __IO uint32_t ReqSrcReg_H;
     __IO uint32_t ReqDstReg_L;
@@ -806,7 +806,7 @@ typedef struct
     __IO uint32_t LstSrcReg_H;
     __IO uint32_t LstDstReg_L;
     __IO uint32_t LstDstReg_H;
-    
+
     __IO uint32_t DmaCfgReg_L;
     __IO uint32_t DmaCfgReg_H;
     __IO uint32_t ChEnReg_L;
@@ -815,9 +815,9 @@ typedef struct
     __I  uint32_t DmaIdReg_H;
     __IO uint32_t DmaTestReg_L;
     __IO uint32_t DmaTestReg_H;
-    
+
     __IO uint32_t RESERVED2[4];
-    
+
     __I  uint32_t DMA_COMP_PARAMS_6_L;
     __I  uint32_t DMA_COMP_PARAMS_6_H;
     __I  uint32_t DMA_COMP_PARAMS_5_L;
@@ -882,7 +882,7 @@ typedef struct
 
 
 
-/** 
+/**
   * @brief DCMI&IMG COP
   */
 
@@ -921,7 +921,7 @@ typedef struct
     __O  uint32_t  RESERVED1[(0x0104-0x000C) >> 2];
     __IO uint32_t  SSC_SR;
     __IO uint32_t  SSC_SR_CLR;
-    __IO uint32_t  SSC_ACK;	
+    __IO uint32_t  SSC_ACK;
     __O  uint32_t  RESERVED2[(0x0184-0x0110) >> 2];
     __IO uint32_t  DATARAM_SCR;
     __O  uint32_t  RESERVED3[(0x01FC-0x0188) >> 2];
@@ -1008,12 +1008,14 @@ typedef struct
 #define BPU_BASE                                (AIR105_APB2_BASE)
 
 
+#define SPIM3_BASE                              (AIR105_APB3_BASE)
+#define SPIM4_BASE                              (AIR105_APB3_BASE + 0x1000)
 #define UART2_BASE                              (AIR105_APB3_BASE + 0x4000)
 #define UART3_BASE                              (AIR105_APB3_BASE + 0x5000)
 #define KEYBOARD_BASE                           (AIR105_APB3_BASE + 0x8000)
 #define I2C0_BASE                               (AIR105_APB3_BASE + 0x9000)
 
-#define HSPIM_BASE								(AIR105_AHB_BASE + 0xA3020)	
+#define HSPIM_BASE								(AIR105_AHB_BASE + 0xA3020)
 
 /*@}*/ /* end of group <Device>_MemoryMap */
 
@@ -1037,6 +1039,8 @@ typedef struct
 #define SPIM0                                   ((SPI_TypeDef *) SPIM0_BASE)
 #define SPIM1                                   ((SPI_TypeDef *) SPIM1_BASE)
 #define SPIM2                                   ((SPI_TypeDef *) SPIM2_BASE)
+#define SPIM3                                   ((SPI_TypeDef *) SPIM3_BASE)
+#define SPIM4                                   ((SPI_TypeDef *) SPIM4_BASE)
 
 #define SPIS0                                   ((SPI_TypeDef *) SPIS0_BASE)
 
@@ -1057,7 +1061,7 @@ typedef struct
 
 #define TRNG                                    ((TRNG_TypeDef *)TRNG_BASE)
 #define LCD                                     ((LCD_TypeDef *)LCD_BASE)
-#define KCU                                     ((KCU_TypeDef *)KEYBOARD_BASE)   
+#define KCU                                     ((KCU_TypeDef *)KEYBOARD_BASE)
 #define CRC                                     ((CRC_TypeDef *)CRC_BASE)
 #define OTP                                     ((OTP_TypeDef *)OTP_BASE)
 
@@ -1081,6 +1085,8 @@ typedef struct
 #define GPIOD                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0030))
 #define GPIOE                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0040))
 #define GPIOF                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0050))
+#define GPIOG                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0060))
+#define GPIOH                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0070))
 #define GPIO_GROUP                              ((GPIO_TypeDef *)GPIO_BASE)
 #define GPIO_ALT_GROUP                          ((__IO uint32_t *)(GPIO_BASE + 0x180))
 #define GPIO_WKEN_TYPE_EN                       ((__IO uint32_t *)(GPIO_BASE + 0x220))
@@ -1089,25 +1095,25 @@ typedef struct
 #define GPIO_WKEN_P2_EN                         ((__IO uint32_t *)(GPIO_BASE + 0x22C))
 
 #define WDT                                     ((WDT_TypeDef *)WDG_BASE)
-#define SSC                                     ((SSC_TypeDef *)SSC_BASE)   
+#define SSC                                     ((SSC_TypeDef *)SSC_BASE)
 #define TST                                     ((MH_SMCU_TST_TypeDef *)TST_BASE)
 
 #define DCMI                                    ((DCMI_TypeDef *)DCMI_BASE)
 #define BPU                                     ((BPU_TypeDef *)BPU_BASE)
 #define BPK                                     ((BPK_TypeDef *)BPU_BASE)
 #define RTC                                     ((RTC_TypeDef *)(BPU_BASE + 0xA0))
-#define SENSOR                                  ((SEN_TypeDef *)(BPU_BASE + 0xBC))    
+#define SENSOR                                  ((SEN_TypeDef *)(BPU_BASE + 0xBC))
 #define SEN_FLAG                                ((FLAG_TypeDef*)(BPU_BASE + 0x164))
 
 
 /** @addtogroup Exported_constants
   * @{
   */
-  
+
   /** @addtogroup Peripheral_Registers_Bits_Definition
   * @{
   */
-    
+
 /******************************************************************************/
 /*                         Peripheral Registers_Bits_Definition               */
 /******************************************************************************/
@@ -1162,7 +1168,7 @@ typedef struct
 #define SYSCTRL_AHBPeriph_CRYPT                     ((uint32_t)0x00000001)
 #define SYSCTRL_AHBPeriph_ALL                       ((uint32_t)0x3000002F)
 #define IS_SYSCTRL_AHB_PERIPH(PERIPH)               ((((PERIPH) & ~SYSCTRL_AHBPeriph_ALL) == 0x00) && ((PERIPH) != 0x00))
- 
+
 /*******************  Bit definition for CG_CTRL1 register  *******************/
 #define SYSCTRL_APBPeriph_TRNG                      ((uint32_t)0x80000000)
 #define SYSCTRL_APBPeriph_ADC                       ((uint32_t)0x40000000)
@@ -1176,6 +1182,9 @@ typedef struct
 #define SYSCTRL_APBPeriph_SCI2                      ((uint32_t)0x00010000)
 #define SYSCTRL_APBPeriph_SCI0                      ((uint32_t)0x00004000)
 #define SYSCTRL_APBPeriph_HSPI						((uint32_t)0x00002000)
+#define SYSCTRL_APBPeriph_SPI5                      ((uint32_t)0x00002000)
+#define SYSCTRL_APBPeriph_SPI4						((uint32_t)0x00001000)
+#define SYSCTRL_APBPeriph_SPI3						((uint32_t)0x00000800)
 #define SYSCTRL_APBPeriph_SPI2						((uint32_t)0x00000400)
 #define SYSCTRL_APBPeriph_SPI1						((uint32_t)0x00000200)
 #define SYSCTRL_APBPeriph_SPI0						((uint32_t)0x00000100)
@@ -1198,7 +1207,7 @@ typedef struct
 #define SYSCTRL_CRYPT_RESET							((uint32_t)0x00000001)
 #define SYSCTRL_AHBPeriph_RESET_ALL					((uint32_t)0xF000002F)
 #define IS_SYSCTRL_AHB_PERIPH_RESET(PERIPH)         ((((PERIPH) & ~SYSCTRL_AHBPeriph_RESET_ALL) == 0x00) && ((PERIPH) != 0x00))
-                                                                               
+
 /*******************  Bit definition for PHER_CTRL register  *******************/
 #define SYSCTRL_PHER_CTRL_SPI0_SLV_EN               ((uint32_t)0x01000000)      /* 0:MASTER  1:SLAVE */
 #define SYSCTRL_PHER_CTRL_SCI2_VCCEN_INV            ((uint32_t)0x00400000)
@@ -1760,18 +1769,18 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 /*******************  Bit definition for BPK_RDY register  ********************/
-#define BPK_RDY_POR                                 ((uint32_t)0x0002) 
-#define BPK_RDY_READY                               ((uint32_t)0x0001) 
+#define BPK_RDY_POR                                 ((uint32_t)0x0002)
+#define BPK_RDY_READY                               ((uint32_t)0x0001)
 
 /*******************  Bit definition for BPK_RR register  *********************/
-#define BPK_RR_RESET                                ((uint32_t)0x0001) 
+#define BPK_RR_RESET                                ((uint32_t)0x0001)
 
 /*******************  Bit definition for BPK_LR register  *********************/
-#define BPK_LR_LOCK_SELF                            ((uint32_t)0x0001) 
-#define BPK_LR_LOCK_RESET                           ((uint32_t)0x0002) 
-#define BPK_LR_LOCK_KEYWRITE                        ((uint32_t)0x0004) 
-#define BPK_LR_LOCK_KEYREAD                         ((uint32_t)0x0008) 
-#define BPK_LR_LOCK_KEYCLEAR                        ((uint32_t)0x0010)    
+#define BPK_LR_LOCK_SELF                            ((uint32_t)0x0001)
+#define BPK_LR_LOCK_RESET                           ((uint32_t)0x0002)
+#define BPK_LR_LOCK_KEYWRITE                        ((uint32_t)0x0004)
+#define BPK_LR_LOCK_KEYREAD                         ((uint32_t)0x0008)
+#define BPK_LR_LOCK_KEYCLEAR                        ((uint32_t)0x0010)
 #define BPK_LR_LOCK_SCRAMBER				  		((uint32_t)0x0020)
 #define BPK_LR_LOCK_ALL				                ((uint32_t)0x003F)
 
@@ -1853,7 +1862,7 @@ typedef struct
 /******************************************************************************/
 /**********  Bit definition for TIMER_CONTROL_REG register  *******************/
 #define TIMER_CONTROL_REG_TIMER_ENABLE              (0x0001U)
-#define TIMER_CONTROL_REG_TIMER_MODE                (0x0002U) 
+#define TIMER_CONTROL_REG_TIMER_MODE                (0x0002U)
 #define TIMER_CONTROL_REG_TIMER_INTERRUPT           (0x0004U)
 #define TIMER_CONTROL_REG_TIMER_PWM                 (0x0008U)
 #define TIMER_CONTROL_REG_PWM_SINGLE_PULSE          (0x0010U)
@@ -1979,13 +1988,13 @@ typedef struct
 #define QUADSPI_FCU_CMD_ACCESS_REQ                      ((uint32_t)0x00000001U)
 
 #define QUADSPI_ADDRESS_ADR                             ((uint32_t)0xFFFFFF00U)
-#define QUADSPI_ADDRESS_M8                              ((uint32_t)0x000000FFU) 
+#define QUADSPI_ADDRESS_M8                              ((uint32_t)0x000000FFU)
 
-#define QUADSPI_BYTE_NUM_WR_BYTE                        ((uint32_t)0x00001FFFU) 
-#define QUADSPI_BYTE_NUM_RD_BYTE                        ((uint32_t)0x1FFF0000U) 
+#define QUADSPI_BYTE_NUM_WR_BYTE                        ((uint32_t)0x00001FFFU)
+#define QUADSPI_BYTE_NUM_RD_BYTE                        ((uint32_t)0x1FFF0000U)
 
-#define QUADSPI_WR_FIFO_WR_DATA                         ((uint32_t)0xFFFFFFFFU) 
-#define QUADSPI_RD_FIFO_RD_DATA                         ((uint32_t)0xFFFFFFFFU) 
+#define QUADSPI_WR_FIFO_WR_DATA                         ((uint32_t)0xFFFFFFFFU)
+#define QUADSPI_RD_FIFO_RD_DATA                         ((uint32_t)0xFFFFFFFFU)
 
 #define QUADSPI_DEVICE_PARA_SAMPLE_DLY                  ((uint32_t)0x00008000U)
 #define QUADSPI_DEVICE_PARA_SAMPLE_PHA                  ((uint32_t)0x00004000U)

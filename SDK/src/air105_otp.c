@@ -12,6 +12,7 @@
 
 #include "air105_otp.h"
 
+#define BIT(bit) ((1 << (bit)))
 #define OTP_DONE_FLAG BIT(0)
 #define OTP_START BIT(0)
 #define OTP_WAKEUPEN BIT(1)

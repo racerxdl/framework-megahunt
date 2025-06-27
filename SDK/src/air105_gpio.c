@@ -23,7 +23,7 @@ static volatile uint16_t GPIO_OD_Mark[GPIO_GROUP_NUM] = {0};
  */
 static int32_t GPIO_GetGPIONum(GPIO_TypeDef* GPIOx) {
     int32_t i;
-    GPIO_TypeDef* GPIOArray[GPIO_GROUP_NUM] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF};
+    GPIO_TypeDef* GPIOArray[GPIO_GROUP_NUM] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG, GPIOH};
 
     assert_param(IS_GPIO_PERIPH(GPIOx));
 

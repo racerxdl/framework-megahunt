@@ -524,15 +524,15 @@ typedef struct
     __IO uint32_t INTP_STA;
 } GPIO_INTP_TypeDef;
 
-#define GPIO_GROUP_NUM   6
+#define GPIO_GROUP_NUM    8
 typedef struct
 {
     GPIO_TypeDef GPIO[GPIO_GROUP_NUM];
-    __I  uint32_t RSVD0[(0x114 - 0x060)>>2];
+    __I  uint32_t RSVD0[(0x10C - 0x080)>>2];
     __I  uint32_t INTP[GPIO_GROUP_NUM];
     __I  uint32_t RSVD1[(0x180 - 0x12C)>>2];
     __IO uint32_t ALT[GPIO_GROUP_NUM];
-    __I  uint32_t RSVD2[(0x200 - 0x198)>>2];
+    __I  uint32_t RSVD2[(0x200 - 0x1a0)>>2];
     __IO uint32_t SYS_CR1;
     __I  uint32_t RSVD3[(0x220 - 0x204)>>2];
     __IO uint32_t WAKE_TYPE_EN;
