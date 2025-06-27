@@ -56,14 +56,14 @@ typedef enum IRQn
 /******  Cortex-M# Processor Exceptions Numbers ***************************************************/
 
 /* ToDo: use this Cortex interrupt numbers if your device is a CORTEX-M3 / Cortex-M4 device       */
-	NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt                      */
-	MemoryManagement_IRQn         = -12,      /*!<  4 Memory Management Interrupt                 */
-	BusFault_IRQn                 = -11,      /*!<  5 Bus Fault Interrupt                         */
-	UsageFault_IRQn               = -10,      /*!<  6 Usage Fault Interrupt                       */
-	SVCall_IRQn                   = -5,       /*!< 11 SV Call Interrupt                           */
-	DebugMonitor_IRQn             = -4,       /*!< 12 Debug Monitor Interrupt                     */
-	PendSV_IRQn                   = -2,       /*!< 14 Pend SV Interrupt                           */
-	SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt                       */
+    NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt                      */
+    MemoryManagement_IRQn         = -12,      /*!<  4 Memory Management Interrupt                 */
+    BusFault_IRQn                 = -11,      /*!<  5 Bus Fault Interrupt                         */
+    UsageFault_IRQn               = -10,      /*!<  6 Usage Fault Interrupt                       */
+    SVCall_IRQn                   = -5,       /*!< 11 SV Call Interrupt                           */
+    DebugMonitor_IRQn             = -4,       /*!< 12 Debug Monitor Interrupt                     */
+    PendSV_IRQn                   = -2,       /*!< 14 Pend SV Interrupt                           */
+    SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt                       */
 
 /******  Device Specific Interrupt Numbers ********************************************************/
 /* ToDo: add here your device specific external interrupt numbers
@@ -111,11 +111,11 @@ typedef enum IRQn
     DCMI_IRQn                                       = 42,
 
     QR_IRQn                                         = 46,
-	GPU_IRQn										= 47,
+    GPU_IRQn										= 47,
 
-	AWD_IRQn										= 49,
-	DAC_IRQn										= 50,
-	SPI5_IRQn										= 51
+    AWD_IRQn										= 49,
+    DAC_IRQn										= 50,
+    SPI5_IRQn										= 51
 } IRQn_Type;
 
 
@@ -226,7 +226,7 @@ typedef struct
     __O uint32_t  SOFT_RST2;
     __IO uint32_t LOCK_R;
     __IO uint32_t PHER_CTRL;
-	__I uint32_t  SYS_RSVD[(0x2C-0x1C) >> 2];
+    __I uint32_t  SYS_RSVD[(0x2C-0x1C) >> 2];
     __I uint32_t  HCLK_1MS_VAL;
     __I uint32_t  PCLK_1MS_VAL;
     __IO uint32_t ANA_CTRL;
@@ -236,16 +236,16 @@ typedef struct
     __IO uint32_t SW_RSV2;
     __IO uint32_t CARD_RSVD;
     __IO uint32_t LDO25_CR;
-	__IO uint32_t DMA_CHAN1;
+    __IO uint32_t DMA_CHAN1;
     __I uint32_t  SYS_RSVD2[(0x100-0x54) >> 2];
     __IO uint32_t MSR_CR1;
     __IO uint32_t MSR_CR2;
     __IO uint32_t USBPHY_CR1;
     __IO uint32_t USBPHY_CR2;
     __IO uint32_t USBPHY_CR3;
-	__IO uint32_t ISO7816_CR;
-	__IO uint32_t LDO_CR;
-	__IO uint32_t CHG_CSR;
+    __IO uint32_t ISO7816_CR;
+    __IO uint32_t LDO_CR;
+    __IO uint32_t CHG_CSR;
     __I uint32_t  SYS_RSVD3[(0x204-0x120) >> 2];
     __IO uint32_t RSVD_POR;
     __I uint32_t  SYS_RSVD4[(0x3EC-0x208) >> 2];
@@ -376,7 +376,7 @@ typedef struct
     __IO uint32_t CACHE_REF;
     __I  uint32_t CACHE_RSVD0[(0x40-0x28) >> 2];
     __IO uint32_t CACHE_CONFIG;
-	__I  uint32_t CACHE_RSVD1[(0x74-0x44) >> 2];
+    __I  uint32_t CACHE_RSVD1[(0x74-0x44) >> 2];
     __IO uint32_t CACHE_SADDR;
     __IO uint32_t CACHE_EADDR;
 
@@ -404,11 +404,11 @@ typedef struct
     __IO uint32_t FPM_CTRL;
     __O  uint32_t INTR_STAT;
     __IO uint32_t INTR_CTRL;
-	__IO uint32_t RESERVED1[12];
+    __IO uint32_t RESERVED1[12];
     __IO uint32_t SMU_OP1;
     __IO uint32_t SMU_OP2;
     __O  uint32_t SMU_RES;
-	__IO uint32_t RESERVED2[13];
+    __IO uint32_t RESERVED2[13];
     __IO float    MATRIX1_00;
     __IO float    MATRIX1_01;
     __IO float    MATRIX1_02;
@@ -418,21 +418,21 @@ typedef struct
     __IO float    MATRIX1_20;
     __IO float    MATRIX1_21;
     __IO float    MATRIX1_22;
-	__IO uint32_t RESERVED3[7];
+    __IO uint32_t RESERVED3[7];
     __IO float    MATRIX2_00;
     __IO float    MATRIX2_01;
     __IO float    MATRIX2_02;
-	__IO uint32_t RESERVED4[13];
+    __IO uint32_t RESERVED4[13];
     __IO uint32_t TABLE1_LEN;
     __IO uint32_t TABLE2_LEN;
     __IO uint32_t ACC;
     __IO uint32_t POSITION;
-	__IO uint32_t VAL3;
-	__IO uint32_t RESERVED5[443];
-	__IO uint32_t TABLE1_RAM;
-	__IO uint32_t RESERVED6[255];
-	__IO uint32_t TABLE2_RAM;
-	__IO uint32_t RESERVED7[63];
+    __IO uint32_t VAL3;
+    __IO uint32_t RESERVED5[443];
+    __IO uint32_t TABLE1_RAM;
+    __IO uint32_t RESERVED6[255];
+    __IO uint32_t TABLE2_RAM;
+    __IO uint32_t RESERVED7[63];
 }QRCODE_TypeDef;
 
 
@@ -554,15 +554,15 @@ typedef struct
 typedef struct
 {
     __IO uint32_t KEY[BPK_KEY_NUM];
-	__I  uint32_t BPK_RSVD0[(0x80-0x40)>>2];
+    __I  uint32_t BPK_RSVD0[(0x80-0x40)>>2];
     __IO uint32_t BPK_RDY;
     __IO uint32_t BPK_CLR;
     __IO uint32_t BPK_LRA;
     __IO uint32_t BPK_LWA;
     __I  uint32_t BPK_RSVD1;
     __IO uint32_t BPK_LR;
-	__IO uint32_t BPK_SCR;
-	__IO uint32_t BPK_POWER;
+    __IO uint32_t BPK_SCR;
+    __IO uint32_t BPK_POWER;
 
     __IO uint32_t RTC_CS;
     __IO uint32_t RTC_REF;
@@ -572,7 +572,7 @@ typedef struct
     __IO uint32_t OSC32K_CR;
     __IO uint32_t RTC_ATTA_TIM;
 
-	__IO uint32_t BPK_RR;
+    __IO uint32_t BPK_RR;
     __IO uint32_t SEN_EXT_TYPE;
     __IO uint32_t SEN_EXT_CFG;
     __IO uint32_t SEN_SOFT_EN;
@@ -594,20 +594,20 @@ typedef struct
     FLAG_TypeDef  SEN_FLAG;
     __IO uint32_t SEN_DEBUG;
     __I  uint32_t BPU_RSVD4[(0x200- 0x178) >> 2];
-	__IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
+    __IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
 } BPU_TypeDef;
 
 typedef struct
 {
     __IO uint32_t KEY[BPK_KEY_NUM];
-	__I  uint32_t BPK_RSVD0[(0x80-0x40) >> 2];
+    __I  uint32_t BPK_RSVD0[(0x80-0x40) >> 2];
     __IO uint32_t BPK_RDY;
     __IO uint32_t BPK_CLR;
     __IO uint32_t BPK_LRA;
     __IO uint32_t BPK_LWA;
     __I  uint32_t BPK_RSVD1;
     __IO uint32_t BPK_LR;
-	__IO uint32_t BPK_SCR;
+    __IO uint32_t BPK_SCR;
     __IO uint32_t BPK_POWER;
 } BPK_TypeDef;
 
@@ -626,7 +626,7 @@ typedef struct
 #define INNER_SENSOR_NUM       7
 typedef struct
 {
-	__IO uint32_t BPK_RR;
+    __IO uint32_t BPK_RR;
     __IO uint32_t SEN_EXT_TYPE;
     __IO uint32_t SEN_EXT_CFG;
     __IO uint32_t SEN_SOFT_EN;
@@ -648,7 +648,7 @@ typedef struct
     FLAG_TypeDef  SEN_FLAG;
     __IO uint32_t SEN_DEBUG;
     __I  uint32_t RESERVED4[(0x200- 0x178) >> 2];
-	__IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
+    __IO uint32_t BPK_RAM[(0x600-0x200) >> 2];
 } SEN_TypeDef;
 
 
@@ -847,37 +847,37 @@ typedef struct
 
 typedef struct
 {
-	__IO uint32_t SCI_DATA;
-	__IO uint32_t SCI_CR0;
-	__IO uint32_t SCI_CR1;
-	__IO uint32_t SCI_CR2;
-	__IO uint32_t SCI_IER;
-	__IO uint32_t SCI_RETRY;
-	__IO uint32_t SCI_TIDE;
-	__IO uint32_t SCI_TXCOUNT;
-	__IO uint32_t SCI_RXCOUNT;
-	__I  uint32_t SCI_FR;
-	__IO uint32_t SCI_RXTIME;
-	__IO uint32_t SCI_ISTAT;
-	__IO uint32_t SCI_STABLE;
-	__IO uint32_t SCI_ATIME;
-	__IO uint32_t SCI_DTIME;
+    __IO uint32_t SCI_DATA;
+    __IO uint32_t SCI_CR0;
+    __IO uint32_t SCI_CR1;
+    __IO uint32_t SCI_CR2;
+    __IO uint32_t SCI_IER;
+    __IO uint32_t SCI_RETRY;
+    __IO uint32_t SCI_TIDE;
+    __IO uint32_t SCI_TXCOUNT;
+    __IO uint32_t SCI_RXCOUNT;
+    __I  uint32_t SCI_FR;
+    __IO uint32_t SCI_RXTIME;
+    __IO uint32_t SCI_ISTAT;
+    __IO uint32_t SCI_STABLE;
+    __IO uint32_t SCI_ATIME;
+    __IO uint32_t SCI_DTIME;
 
-	__IO uint32_t SCI_ATRSTIME;
-	__IO uint32_t SCI_ATRDTIME;
-	__IO uint32_t SCI_BLKTIME;
-	__IO uint32_t SCI_CHTIME;
-	__IO uint32_t SCI_CLKICC;
-	__IO uint32_t SCI_BAUD;
-	__IO uint32_t SCI_VALUE;
-	__IO uint32_t SCI_CHGUARD;
-	__IO uint32_t SCI_BLKGUARD;
-	__IO uint32_t SCI_SYNCCR;
-	__IO uint32_t SCI_SYNCDATA;
-	__IO uint32_t SCI_RAWSTAT;
-	__IO uint32_t SCI_IIR;
-	__I  uint32_t SCI_RES1[4];
-	__I  uint32_t SCI_RES2[32];
+    __IO uint32_t SCI_ATRSTIME;
+    __IO uint32_t SCI_ATRDTIME;
+    __IO uint32_t SCI_BLKTIME;
+    __IO uint32_t SCI_CHTIME;
+    __IO uint32_t SCI_CLKICC;
+    __IO uint32_t SCI_BAUD;
+    __IO uint32_t SCI_VALUE;
+    __IO uint32_t SCI_CHGUARD;
+    __IO uint32_t SCI_BLKGUARD;
+    __IO uint32_t SCI_SYNCCR;
+    __IO uint32_t SCI_SYNCDATA;
+    __IO uint32_t SCI_RAWSTAT;
+    __IO uint32_t SCI_IIR;
+    __I  uint32_t SCI_RES1[4];
+    __I  uint32_t SCI_RES2[32];
 } SCI_TypeDef;
 
 
@@ -888,16 +888,16 @@ typedef struct
 
 typedef struct
 {
-	__IO uint32_t CR;       /*!< DCMI control register 1,                       Address offset: 0x00 */
-	__IO uint32_t SR;       /*!< DCMI status register,                          Address offset: 0x04 */
-	__IO uint32_t RISR;     /*!< DCMI raw interrupt status register,            Address offset: 0x08 */
-	__IO uint32_t IER;      /*!< DCMI interrupt enable register,                Address offset: 0x0C */
-	__IO uint32_t MISR;     /*!< DCMI masked interrupt status register,         Address offset: 0x10 */
-	__IO uint32_t ICR;      /*!< DCMI interrupt clear register,                 Address offset: 0x14 */
-	__IO uint32_t RESERVED1[2];
-	__IO uint32_t CWSTRTR;  /*!< DCMI crop window start,                        Address offset: 0x20 */
-	__IO uint32_t CWSIZER;  /*!< DCMI crop window size,                         Address offset: 0x24 */
-	__IO uint32_t DR;       /*!< DCMI data register,                            Address offset: 0x28 */
+    __IO uint32_t CR;       /*!< DCMI control register 1,                       Address offset: 0x00 */
+    __IO uint32_t SR;       /*!< DCMI status register,                          Address offset: 0x04 */
+    __IO uint32_t RISR;     /*!< DCMI raw interrupt status register,            Address offset: 0x08 */
+    __IO uint32_t IER;      /*!< DCMI interrupt enable register,                Address offset: 0x0C */
+    __IO uint32_t MISR;     /*!< DCMI masked interrupt status register,         Address offset: 0x10 */
+    __IO uint32_t ICR;      /*!< DCMI interrupt clear register,                 Address offset: 0x14 */
+    __IO uint32_t RESERVED1[2];
+    __IO uint32_t CWSTRTR;  /*!< DCMI crop window start,                        Address offset: 0x20 */
+    __IO uint32_t CWSIZER;  /*!< DCMI crop window size,                         Address offset: 0x24 */
+    __IO uint32_t DR;       /*!< DCMI data register,                            Address offset: 0x28 */
 } DCMI_TypeDef;
 typedef struct
 {
@@ -1173,23 +1173,23 @@ typedef struct
 #define SYSCTRL_APBPeriph_TRNG                      ((uint32_t)0x80000000)
 #define SYSCTRL_APBPeriph_ADC                       ((uint32_t)0x40000000)
 #define SYSCTRL_APBPeriph_CRC                       ((uint32_t)0x20000000)
-#define SYSCTRL_APBPeriph_KBD						((uint32_t)0x08000000)
-#define SYSCTRL_APBPeriph_BPU			            ((uint32_t)0x04000000)
-#define SYSCTRL_APBPeriph_DCMIS	                    ((uint32_t)0x00800000)
+#define SYSCTRL_APBPeriph_KBD                       ((uint32_t)0x08000000)
+#define SYSCTRL_APBPeriph_BPU                       ((uint32_t)0x04000000)
+#define SYSCTRL_APBPeriph_DCMIS                     ((uint32_t)0x00800000)
 #define SYSCTRL_APBPeriph_TIMM0                     ((uint32_t)0x00200000)
 #define SYSCTRL_APBPeriph_GPIO                      ((uint32_t)0x00100000)
 #define SYSCTRL_APBPeriph_I2C0                      ((uint32_t)0x00040000)
 #define SYSCTRL_APBPeriph_SCI2                      ((uint32_t)0x00010000)
 #define SYSCTRL_APBPeriph_SCI0                      ((uint32_t)0x00004000)
-#define SYSCTRL_APBPeriph_HSPI						((uint32_t)0x00002000)
+#define SYSCTRL_APBPeriph_HSPI                      ((uint32_t)0x00002000)
 #define SYSCTRL_APBPeriph_SPI5                      ((uint32_t)0x00002000)
-#define SYSCTRL_APBPeriph_SPI4						((uint32_t)0x00001000)
-#define SYSCTRL_APBPeriph_SPI3						((uint32_t)0x00000800)
-#define SYSCTRL_APBPeriph_SPI2						((uint32_t)0x00000400)
-#define SYSCTRL_APBPeriph_SPI1						((uint32_t)0x00000200)
-#define SYSCTRL_APBPeriph_SPI0						((uint32_t)0x00000100)
-#define SYSCTRL_APBPeriph_UART3						((uint32_t)0x00000008)
-#define SYSCTRL_APBPeriph_UART2						((uint32_t)0x00000004)
+#define SYSCTRL_APBPeriph_SPI4                      ((uint32_t)0x00001000)
+#define SYSCTRL_APBPeriph_SPI3                      ((uint32_t)0x00000800)
+#define SYSCTRL_APBPeriph_SPI2                      ((uint32_t)0x00000400)
+#define SYSCTRL_APBPeriph_SPI1                      ((uint32_t)0x00000200)
+#define SYSCTRL_APBPeriph_SPI0                      ((uint32_t)0x00000100)
+#define SYSCTRL_APBPeriph_UART3                     ((uint32_t)0x00000008)
+#define SYSCTRL_APBPeriph_UART2                     ((uint32_t)0x00000004)
 #define SYSCTRL_APBPeriph_UART1                     ((uint32_t)0x00000002)
 #define SYSCTRL_APBPeriph_UART0                     ((uint32_t)0x00000001)
 #define SYSCTRL_APBPeriph_ALL                       ((uint32_t)0xECB5670F)
