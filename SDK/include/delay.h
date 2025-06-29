@@ -12,6 +12,7 @@ void Delay_Init(void);
 
 void Delay_us(uint32_t usec);
 void Delay_ms(uint32_t msec);
+uint32_t get_tick(void);
 
 #ifdef __cplusplus
 }

@@ -4,7 +4,7 @@ ENTRY(Reset_Handler)
 /* Memories definition */
 MEMORY
 {
-    RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 1024K
+    RAM     (xrw)    : ORIGIN = 0x20000000,   LENGTH = 1024K
     FLASH    (rx)    : ORIGIN = 0x01001000,   LENGTH = 1024K
 }
 
@@ -17,22 +17,20 @@ _Min_Stack_Size = 0x10000 ;     /* required amount of stack */
 _sstack = _estack - _Min_Stack_Size;
 __ram_end = ORIGIN(RAM) + LENGTH(RAM);
 
-/* Sections */
 SECTIONS
 {
-    /* The startup code into "FLASH" Rom type memory */
-    .isr_vector :
+    .vectors :
     {
-        . = ALIGN(4);
-        __isr_start_address = .;
-        KEEP(*(.isr_vector)) /* Startup code */
-        . = ALIGN(4);
-    } >FLASH
+        __vectors_start__ = .;
+        KEEP(*(.cortex_vectors))
+        __vectors_end__ = .;
+    } >FLASH AT>FLASH
 
     /* The program code and other data into "FLASH" Rom type memory */
     .text :
     {
         . = ALIGN(4);
+        __text_start__ = .;
         *(.text)           /* .text sections (code) */
         *(.text*)          /* .text* sections (code) */
         *(.glue_7)         /* glue arm to thumb code */
