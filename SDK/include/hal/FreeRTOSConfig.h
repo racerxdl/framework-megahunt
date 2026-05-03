@@ -65,7 +65,7 @@
  #include <stdint.h>
  extern uint32_t SystemCoreClock;
 #endif
-#ifdef __AIR105_BSP__
+#ifdef __MH190X__
 #include "air105.h"
 #endif
 /*  CMSIS-RTOSv2 defines 56 levels of priorities. To be able to use them

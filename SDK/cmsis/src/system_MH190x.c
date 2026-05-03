@@ -47,21 +47,21 @@
 /*----------------------------------------------------------------------------
   Define clocks
  *----------------------------------------------------------------------------*/
-/* ToDo: add here your necessary defines for device initialization
-         following is an example for different system frequencies             */
-#define __HSI             ( 6000000UL)
-#define __XTAL            (12000000UL)    /* Oscillator frequency             */
-#define __SYS_OSC_CLK     (    ___HSI)    /* Main oscillator frequency        */
+#define __HSI             ( 6000000UL)      /* Internal 6 MHz oscillator      */
+#define __XTAL            (12000000UL)      /* External oscillator frequency   */
+#define __SYSTEM_CLOCK    (4*__XTAL)        /* Default after reset: 48 MHz     */
 
-#define __SYSTEM_CLOCK    (4*__XTAL)
-
+/* NOTE: The actual system clock can be raised up to 204 MHz via PLL
+ *       configuration in SystemClock_Config_HSE() (see SDK/src/sysc.c).
+ *       SystemCoreClock here reflects the power-on default before PLL
+ *       is enabled. After PLL configuration, call SystemCoreClockUpdate()
+ *       or set SystemCoreClock directly to match the configured frequency
+ *       (commonly 120 MHz or 168 MHz).
+ */
 
 /*----------------------------------------------------------------------------
   Clock Variable definitions
  *----------------------------------------------------------------------------*/
-/* ToDo: initialize SystemCoreClock with the system core clock frequency value
-         achieved after system intitialization.
-         This means system core clock frequency after call to SystemInit()    */
 uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Clock)*/
 
 
@@ -70,10 +70,11 @@ uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Cl
  *----------------------------------------------------------------------------*/
 void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
 {
-/* ToDo: add code to calculate the system frequency based upon the current
-         register settings.
-         This function can be used to retrieve the system core clock frequeny
-         after user changed register sittings.                                */
+  /* NOTE: This returns the power-on default of 48 MHz.
+   * After calling SystemClock_Config_HSE() or SystemClock_Config_HSI()
+   * (defined in SDK/src/sysc.c), the actual clock may be up to 204 MHz.
+   * Users should call SystemCoreClockUpdate() after clock configuration
+   * or set SystemCoreClock manually to the configured frequency. */
   SystemCoreClock = __SYSTEM_CLOCK;
 }
 

@@ -22,7 +22,7 @@
 #ifndef __BL_INC_H__
 #define __BL_INC_H__
 #include "global_config.h"
-#ifdef __AIR105_BSP__
+#ifdef __MH190X__
 #include "air105.h"
 #include "air105_conf.h"
 #endif

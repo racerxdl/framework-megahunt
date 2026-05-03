@@ -57,10 +57,15 @@
 #define configTIMER_QUEUE_LENGTH                10
 #define configTIMER_TASK_STACK_DEPTH            configMINIMAL_STACK_SIZE
 
-/* Interrupt nesting behaviour configuration. */
-#define configKERNEL_INTERRUPT_PRIORITY         [dependent of processor]
-#define configMAX_SYSCALL_INTERRUPT_PRIORITY    [dependent on processor and application]
-#define configMAX_API_CALL_INTERRUPT_PRIORITY   [dependent on processor and application]
+/* Interrupt nesting behaviour configuration.
+ * Cortex-M4 with 3 priority bits (__NVIC_PRIO_BITS=3):
+ *   configKERNEL_INTERRUPT_PRIORITY = lowest possible (0xE0 = raw, 7 logical)
+ *   configMAX_SYSCALL_INTERRUPT_PRIORITY = mid-range (0xA0 = raw, 5 logical)
+ */
+#define configPRIO_BITS                         3
+#define configKERNEL_INTERRUPT_PRIORITY         ( 0xF << (8 - configPRIO_BITS) )
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY    ( 0x5 << (8 - configPRIO_BITS) )
+#define configMAX_API_CALL_INTERRUPT_PRIORITY   configMAX_SYSCALL_INTERRUPT_PRIORITY
 
 /* Define to trap errors during development. */
 //#define configASSERT( ( x ) ) assert()
