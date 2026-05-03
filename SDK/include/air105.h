@@ -125,29 +125,17 @@ typedef enum IRQn
  * ==========================================================================
  */
 
-/* Configuration of the Cortex-M# Processor and Core Peripherals */
-/* ToDo: set the defines according your Device                                                    */
-/* ToDo: define the correct core revision
-         __CM0_REV if your device is a CORTEX-M0 device
-         __CM3_REV if your device is a CORTEX-M3 device
-         __CM4_REV if your device is a CORTEX-M4 device                                           */
-//#define __CM3_REV                 0x0201    /*!< Core Revision r2p1                               */
-//#define __CM3_REV                 0x0200    /*!< Core Revision r2p0                               */
-#define __CM4_REV                   0x0001    /*!< Core Revision r2p0                               */
+/* Configuration of the Cortex-M3 (SC300 SecurCore) Processor */
+#define __CM3_REV                   0x0200    /*!< Core Revision r2p0                               */
 #define __NVIC_PRIO_BITS          3         /*!< Number of Bits used for Priority Levels          */
 #define __Vendor_SysTickConfig    0         /*!< Set to 1 if different SysTick Config is used     */
 #define __MPU_PRESENT             1         /*!< MPU present or not                               */
-/* ToDo: define __FPU_PRESENT if your devise is a CORTEX-M4                                       */
-#define __FPU_PRESENT             1        /*!< FPU present or not                                */
+#define __FPU_PRESENT             0         /*!< MH1903 is SC300 (Cortex-M3), no FPU              */
 
 /*@}*/ /* end of group <Device>_CMSIS */
 
 
-/* ToDo: include the correct core_cm#.h file
-         core_cm0.h if your device is a CORTEX-M0 device
-         core_cm3.h if your device is a CORTEX-M3 device
-         core_cm4.h if your device is a CORTEX-M4 device                                          */
-#include "core_cm4.h"                       /* Cortex-M# processor and core peripherals           */
+#include "core_cm3.h"                       /* Cortex-M3 processor and core peripherals           */
 /* ToDo: include your system_<Device>.h file
          replace '<Device>' with your device name                                                 */
 #include "system_air105.h"                /* <Device> System  include file                      */
@@ -437,8 +425,41 @@ typedef struct
 
 typedef struct
 {
-    __I  uint32_t RESERVED[(0x1000)>>2];
+    __IO uint32_t SADDR;          /* Source address                                      */
+    __IO uint32_t DADDR;          /* Destination address                                 */
+    __IO uint32_t RADDR;          /* Overlay/reference address                           */
+    __IO uint32_t S_W;            /* Source width                                        */
+    __IO uint32_t S_H;            /* Source height                                       */
+    __I  uint32_t RESERVED0[2];
+    __IO uint32_t R_W;            /* Overlay width                                       */
+    __IO uint32_t R_H;            /* Overlay height                                      */
+    __I  uint32_t RESERVED1[5];
+    __IO uint32_t GPU_CR;         /* Control register (bilinear scaling enable)          */
 } GPU_TypeDef;
+
+typedef struct
+{
+    __IO uint32_t DATA[32];       /* 128-byte data buffer (0x00-0x7F), algorithm-dependent */
+    __I  uint32_t STATUS;         /* 0x80: bit0=busy                                      */
+    __O  uint32_t ITCLR;          /* 0x84: write 1 to clear interrupt                      */
+    __IO uint32_t CTRL;           /* 0x88: algorithm selector + start                      */
+    __IO uint32_t CFG;            /* 0x8C: mode, key size, direction                       */
+} CRYPT_TypeDef;
+
+typedef struct
+{
+    __IO uint32_t CTRL;           /* 0x00: control                                         */
+    __I  uint32_t STATUS;         /* 0x04: status                                          */
+    __IO uint32_t CMD;            /* 0x08: command (ModExp, ModMul, ModInv, etc.)          */
+    __I  uint32_t RESERVED0;
+    __IO uint32_t OPA;            /* 0x10: operand A pointer                               */
+    __IO uint32_t OPB;            /* 0x14: operand B pointer                               */
+    __IO uint32_t SIZE;           /* 0x18: operand size in 32-bit words                    */
+    __I  uint32_t RESERVED1[17];
+    __I  uint32_t BUSKEY[2];      /* 0x60: bus encryption key (MH1902 only)                */
+    __I  uint32_t RESERVED2[2];
+    __IO uint32_t SLOT;           /* 0x6C: key slot (MH1902 only)                          */
+} PKE_TypeDef;
 
 typedef struct
 {
@@ -978,6 +999,9 @@ typedef struct
 
 #define SSC_BASE                                (AIR105_AHB_BASE + 0x0000)
 #define TST_BASE                                (AIR105_AHB_BASE + 0x03F4)
+#define CRYPT_BASE                              (AIR105_AHB_BASE + 0x3000)
+#define PKE_BASE                                (AIR105_AHB_BASE + 0x4000)
+#define CRAM_BASE                               (AIR105_AHB_BASE + 0x5000)
 #define DMA_BASE                                (AIR105_AHB_BASE + 0x0800)
 #define USB_BASE                                (AIR105_AHB_BASE + 0x0C00)
 #define LCD_BASE                                (AIR105_AHB_BASE + 0x1000)
@@ -987,7 +1011,8 @@ typedef struct
 #define QRCODE_BASE                             (AIR105_AHB_BASE + 0x90000)
 #define GPU_BASE                                (AIR105_AHB_BASE + 0xA1000)
 #define QSPI_BASE                               (AIR105_AHB_BASE + 0xA2000)
-#define HSPI_BASE                              	(AIR105_AHB_BASE + 0xA3000)
+#define SPIM5_BASE                              (AIR105_AHB_BASE + 0xA3000)
+#define HSPI_BASE                              	(AIR105_AHB_BASE + 0xA3020)
 
 #define SCI0_BASE                               (AIR105_APB0_BASE)
 #define CRC_BASE                                (AIR105_APB0_BASE + 0x2000)
@@ -1045,6 +1070,7 @@ typedef struct
 #define SPIM2                                   ((SPI_TypeDef *) SPIM2_BASE)
 #define SPIM3                                   ((SPI_TypeDef *) SPIM3_BASE)
 #define SPIM4                                   ((SPI_TypeDef *) SPIM4_BASE)
+#define SPIM5                                   ((SPI_TypeDef *) SPIM5_BASE)
 
 #define SPIS0                                   ((SPI_TypeDef *) SPIS0_BASE)
 
@@ -1101,6 +1127,8 @@ typedef struct
 #define WDT                                     ((WDT_TypeDef *)WDG_BASE)
 #define SSC                                     ((SSC_TypeDef *)SSC_BASE)
 #define TST                                     ((MH_SMCU_TST_TypeDef *)TST_BASE)
+#define CRYPT                                   ((CRYPT_TypeDef *)CRYPT_BASE)
+#define PKE                                     ((PKE_TypeDef *)PKE_BASE)
 
 #define DCMI                                    ((DCMI_TypeDef *)DCMI_BASE)
 #define BPU                                     ((BPU_TypeDef *)BPU_BASE)
