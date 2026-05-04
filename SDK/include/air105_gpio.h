@@ -101,7 +101,17 @@ typedef enum
                                     ((PERIPH) == GPIOC) || \
                                     ((PERIPH) == GPIOD) || \
                                     ((PERIPH) == GPIOE) || \
-                                    ((PERIPH) == GPIOF))
+                                    ((PERIPH) == GPIOF) || \
+                                    ((PERIPH) == GPIOG) || \
+                                    ((PERIPH) == GPIOH) || \
+                                    ((PERIPH) == GPIOI) || \
+                                    ((PERIPH) == GPIOJ) || \
+                                    ((PERIPH) == GPIOK) || \
+                                    ((PERIPH) == GPIOL) || \
+                                    ((PERIPH) == GPIOM) || \
+                                    ((PERIPH) == GPION) || \
+                                    ((PERIPH) == GPIOO) || \
+                                    ((PERIPH) == GPIOP))
 
 #define GPIO_Pin_0                 ((uint16_t)0x0001)  /*!< Pin 0 selected */
 #define GPIO_Pin_1                 ((uint16_t)0x0002)  /*!< Pin 1 selected */

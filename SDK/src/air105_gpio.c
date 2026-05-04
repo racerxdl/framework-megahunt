@@ -13,7 +13,7 @@
 #include "air105_gpio.h"
 
 /* Private variables --------------------------------------------------------*/
-static volatile uint16_t GPIO_OD_Mark[GPIO_GROUP_NUM] = {0};
+static volatile uint16_t GPIO_OD_Mark[16] = {0};  /* A-P = 16 banks */
 
 /* Private function prototypes ----------------------------------------------*/
 /**
@@ -23,11 +23,13 @@ static volatile uint16_t GPIO_OD_Mark[GPIO_GROUP_NUM] = {0};
  */
 static int32_t GPIO_GetGPIONum(GPIO_TypeDef* GPIOx) {
     int32_t i;
-    GPIO_TypeDef* GPIOArray[GPIO_GROUP_NUM] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG, GPIOH};
+    GPIO_TypeDef* GPIOArray[] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG, GPIOH,
+                                 GPIOI, GPIOJ, GPIOK, GPIOL, GPIOM, GPION, GPIOO, GPIOP};
+    int32_t array_size = sizeof(GPIOArray) / sizeof(GPIOArray[0]);
 
     assert_param(IS_GPIO_PERIPH(GPIOx));
 
-    for (i = 0; i < GPIO_GROUP_NUM; i++) {
+    for (i = 0; i < array_size; i++) {
         if (GPIOArray[i] == GPIOx) {
             return i;
         }

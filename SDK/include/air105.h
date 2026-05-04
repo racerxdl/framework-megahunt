@@ -549,7 +549,7 @@ typedef struct
     __IO uint32_t INTP_STA;
 } GPIO_INTP_TypeDef;
 
-#define GPIO_GROUP_NUM    8
+#define GPIO_GROUP_NUM    8   /* banks A-H in the standard struct; I-P are at extended offsets */
 typedef struct
 {
     GPIO_TypeDef GPIO[GPIO_GROUP_NUM];
@@ -568,6 +568,13 @@ typedef struct
     __I  uint32_t RSVD5[(0x800 - 0x234)>>2];
     GPIO_INTP_TypeDef INTP_TYPE_STA[GPIO_GROUP_NUM];
 } GPIO_MODULE_TypeDef;
+
+/* Extended GPIO banks I-P (16-byte spacing beyond GPIOH, offset 0x80-0xF0).
+ * Clock-gated via SYSCTRL->PHER_CTRL bit 18 (GPIO_IP_CLK_EN).
+ * Interrupts on IRQ #43 and #44.
+ */
+#define GPIO_GROUP_EXT_NUM  8
+#define HAL_GPIO_TOTAL      128  /* 16 banks x 16 pins = 256 */
 
 
 typedef struct
@@ -1117,6 +1124,14 @@ typedef struct
 #define GPIOF                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0050))
 #define GPIOG                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0060))
 #define GPIOH                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0070))
+#define GPIOI                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0080))
+#define GPIOJ                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x0090))
+#define GPIOK                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00A0))
+#define GPIOL                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00B0))
+#define GPIOM                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00C0))
+#define GPION                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00D0))
+#define GPIOO                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00E0))
+#define GPIOP                                   ((GPIO_TypeDef *)(GPIO_BASE + 0x00F0))
 #define GPIO_GROUP                              ((GPIO_TypeDef *)GPIO_BASE)
 #define GPIO_ALT_GROUP                          ((__IO uint32_t *)(GPIO_BASE + 0x180))
 #define GPIO_WKEN_TYPE_EN                       ((__IO uint32_t *)(GPIO_BASE + 0x220))
@@ -1246,6 +1261,7 @@ typedef struct
 #define SYSCTRL_PHER_CTRL_SCI0_VCCEN_INV            ((uint32_t)0x00100000)
 #define SYSCTRL_PHER_CTRL_SCI2_CDET_INV             ((uint32_t)0x00040000)
 #define SYSCTRL_PHER_CTRL_SCI0_CDET_INV             ((uint32_t)0x00010000)
+#define SYSCTRL_PHER_CTRL_GPIO_IP_CLK_EN            ((uint32_t)0x00040000)
 
 /*******************  Bit definition for DMA_CHAN REGISTER  ********************/
 #define SYSCTRL_PHER_CTRL_DMA_CH0_IF_Pos                    (0)
